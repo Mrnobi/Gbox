@@ -1,0 +1,190 @@
+.navigators{
+    width: 100%;
+    height: 66px;
+    z-index: 100;
+    .container{
+        height: 100%;
+        position: relative;
+        border-bottom: 2px solid $title-main-cl;
+    }
+    &__parents{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        a{
+            height: 100%;
+            @include midflex;
+            @include text($fz-text, 'SB', $lh-textbox, $black-cl, upperCase);
+        }
+        &-sub{
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            ul{
+                height: 100%;
+                display: flex;
+                position: relative;
+                li{
+                    height: 100%;
+                    a{
+                        height: 100%;
+                        padding: 0 20px;
+                        @include midflex;
+                        img{
+                            height: 80%;
+                            object-fit: cover;
+                        }
+                    }
+                    &:nth-child(3){
+                        opacity: 0;
+                        @include transform(translateY(-100%));
+                        @include transition($t);
+                    }
+                }
+            }
+        }
+    }
+    &__mobile{
+        width: 100%;
+        height: 100vh;
+        background-color: $main-bg-cl;
+        position: fixed;
+        top: 60px;
+        z-index: 10000;
+        @include hidden;
+        @include transition($t);
+        @include transform(translateX(-100%));
+        ul{
+            display: flex;
+            flex-direction: column;
+            padding: 35px 0 0 25px;
+            li{
+                a{
+                    @include text(30px, 'Thin', $lh-text-infor, $black-cl, upperCase);
+                }
+                &:not(:last-child){
+                    padding-bottom: 30px;
+                }
+                &:hover{
+                    a{
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        &.active{
+            @include transform(translateX(0));
+            @include visible;
+            @include transition($t);
+        }
+    }
+    &.fixtop{
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: rgba($color: $title-main-cl, $alpha: 0.5);
+        @include transition($t);
+        .container{
+            border: none;
+        }
+        .navigators__parents{
+            a{
+                color: $white-cl;
+            }
+            &-sub{
+                ul{
+                    li{
+                        a{
+                            color: $white-cl;
+                        }
+                    }
+                    li:nth-child(3){
+                        opacity: 1;
+                        @include transform(translateY(0));
+                        @include transition($t);
+                    }
+                }
+            }
+        }
+    }
+    @include tablet{
+        &__parents{
+            &-sub{
+                width: 57%;
+            }
+        }
+    }
+    @include mobile{
+        height: 60px;
+        .container{
+            display: none;
+        }
+    }
+    @include mobile-xxs{
+        height: 60px;
+        .container{
+            display: none;
+        }
+    }
+}
+.project__list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(auto, 340px);
+    gap: 20px;
+    &-item{
+        .image{
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            a{
+                img{
+                    min-width: 100%;
+                    min-height: 100%;
+                    object-fit: cover;
+                    @include mid;
+                    @include transition($t);
+                }
+            }
+            :hover{
+                img{
+                    @include transform(translate(-50%, -50%) scale(1.05));
+                    @include transition($t);
+                }
+            }
+        }
+        .textbox__project{
+            width: 100%;
+            padding-top: 35px;
+            text-align: center;
+            .title__project{
+                @include text($fz-text, 'Bold', $lh-text-infor, $black-cl, upperCase);
+            }
+            .creator__project{
+                li{
+                    @include text($fz-text, 'Regular', $lh-textbox, $black-cl, none);
+                }
+            }
+        }
+    }
+    @include mobile{
+        grid-template-columns: 1fr;
+        &-item{
+            .image{
+                height: 250px;
+            }
+        }
+    }
+    @include mobile-xxs{
+        grid-template-columns: 1fr;
+        &-item{
+            .image{
+                height: 250px;
+            }
+        }
+    }
+}

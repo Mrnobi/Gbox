@@ -1,0 +1,228 @@
+.studio{
+    .studio__list{
+        .container{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 420px;
+            gap: 20px;
+            padding: 70px 0;
+        }
+        &-item{
+            cursor: pointer;
+            .image{
+                width: 100%;
+                height: 300px;
+                position: relative;
+                overflow: hidden;
+                img{
+                    min-width: 100%;
+                    min-height: 100%;
+                    object-fit: cover;
+                    @include mid;
+                }
+                &::before{
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba($color: $black-cl, $alpha: 0.3);
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+                }
+            }
+            .studio__description{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+                z-index: 1;
+                .number{
+                    width: 20%;
+                }
+                .acreage{
+                    h3{
+                        @include text($fz-text, 'Regular', $lh-text-infor, $black-cl, upperCase);
+                    }
+                    ul{
+                        li{
+                            @include text($fz-text, 'Regular', $lh-textbox, $black-cl, none);
+                        }
+                    }
+                }
+                .more:hover{
+                    .arrow{
+                        svg{
+                            *{
+                                fill: #ffde00;
+                            }
+                        }
+                    }
+                }
+                &::before{
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    background-color: #525355;
+                    opacity: 0;
+                    pointer-events: none;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                    @include transition($t);
+                }
+            }
+            &:hover{
+                .image{
+                    img{
+                        @include transform(translate(-50%, -50%) scale(1.05));
+                        @include transition($t);
+                    }
+                    &::before{
+                        display: none;
+                    }
+                }
+                .studio__description{
+                    .acreage{
+                        h3{
+                            color: $white-cl;
+                        }
+                        ul{
+                            li{
+                                color: $white-cl;
+                            }
+                        }
+                    }
+                    .more{
+                        a{
+                            color: $white-cl;
+                        }
+                    }
+                    &::before{
+                        opacity: 1;
+                        pointer-events: auto;
+                        @include transition($t);
+                    }
+                }
+            }
+        }
+        @include tablet{
+            .container{
+                grid-template-rows: 375px;
+            }
+            .studio__list-item{
+                .studio__description{
+                    .number{
+                        height: 75px;
+                        h2{
+                            font-size: 40px;
+                            line-height: 50px;
+                        }
+                    }
+                }
+            }
+        }
+        @include tablet_lc{
+            .container{
+                grid-template-rows: 400px;
+            }
+            .studio__list-item{
+                .studio__description{
+                    .number{
+                        height: 100px;
+                        h2{
+                            font-size: 40px;
+                            line-height: 50px;
+                        }
+                    }
+                }
+            }
+        }
+        @include mobile{
+            .container{
+                grid-template-columns: 1fr;
+                grid-template-rows: 375px;
+                padding: 70px 15px;
+            }
+            .studio__list-item{
+                .studio__description{
+                    .number{
+                        height: 75px;
+                        h2{
+                            font-size: 40px;
+                            line-height: 50px;
+                        }
+                    }
+                    .more{
+                        a:not(:last-child){
+                            display: none;
+                        }
+                        .arrow{
+                            @include transform(translateX(-10px));
+                            @include transition(($t));
+                            .svg{
+                                transform: rotate(-90deg);
+                            }
+                        }
+                        &:hover{
+                            .arrow{
+                                @include transform(translateX(0));
+                                @include transition($t);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include mobile-xxs{
+            .container{
+                grid-template-columns: 1fr;
+                grid-template-rows: 265px;
+                padding: 40px 15px;
+            }
+            .studio__list-item{
+                .image{
+                    height: 190px;
+                }
+                .studio__description{
+                    .number{
+                        height: 75px;
+                        h2{
+                            font-size: 35px;
+                            line-height: 50px;
+                        }
+                    }
+                    .more{
+                        a:not(:last-child){
+                            display: none;
+                        }
+                        .arrow{
+                            @include transform(translateX(-10px));
+                            @include transition(($t));
+                            .svg{
+                                transform: rotate(-90deg);
+                            }
+                        }
+                        &:hover{
+                            .arrow{
+                                @include transform(translateX(0px));
+                                @include transition($t);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .line{
+        margin: 0 0 55px 0;
+        .container{
+            overflow: hidden;
+            width: 100%;
+            height: 2px;
+            background-color: $black-cl;
+        }
+    }
+}

@@ -1,0 +1,125 @@
+.contact{
+    .contact__us{
+        background-image: url(../img/bg-contact-us.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding-top: 90px;
+        &-logo{
+            width: 110px;
+            height: 140px;
+            margin: auto;
+        }
+        &-textbox{
+            display: flex;
+            justify-content: center;
+            padding-top: 35px;
+            padding-bottom: 60px;
+            ul{
+                li{
+                    @include text($fz-text, 'Regular', $lh-text-infor, $white-cl, upperCase);
+                }
+                &:not(:last-child){
+                    padding-right: 5rem;
+                }
+            }
+        }
+        .more{
+            margin: auto;
+            .arrow{
+                @include transform(translateY(-10px));
+                @include transition($t);
+                svg{
+                    fill: #f4f4f4;
+                }
+            }
+            &:hover{
+                .arrow{
+                    @include transform(translateY(0px));
+                    @include transition($t);
+                }
+            }
+        }
+        @include mobile{
+            background-image: url(../img/bg-contact-mobile.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            &-logo{
+                display: none;
+            }
+            &-textbox{
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                ul{
+                    &:not(:last-child){
+                        padding-right: 0;
+                    }
+                }
+            }
+            .more{
+                display: none;
+            }
+        }
+        @include mobile-xxs{
+            background-image: url(../img/bg-contact-mobile.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            &-logo{
+                display: none;
+            }
+            &-textbox{
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                ul{
+                    &:not(:last-child){
+                        padding-right: 0;
+                    }
+                }
+            }
+            .more{
+                display: none;
+            }
+        }
+    }
+}
+.footer__contact{
+    height: 510px;
+    .footer__right{
+        width: 100%;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        flex-direction: row;
+        p{
+            max-width: 24% !important;
+            display: block;
+            span{
+                display: initial;
+            }
+        }
+        &-form{
+            max-width: 50%;
+        }
+    }
+    @include tablet{
+        height: 400px;
+        .footer__right{
+            p{
+                max-width: 27% !important;
+            }
+        }
+        .footer__bottom{
+            padding-top: 55px;
+        }
+    }
+    @include mobile{
+        height: 255px;
+    }
+    @include mobile-xxs{
+        height: 255px;
+    }
+}

@@ -1,0 +1,275 @@
+.Cafe{
+    .intro{
+        padding-top: 55px;
+        background-color: $black-cl;
+        background-image: url(../img/bg-cafe.jpg);
+        background-repeat: repeat-x;
+        background-position: center;
+        background-size: cover;
+        &__textbox{
+            max-width: 76%;
+            @include midflex;
+            flex-direction: column;
+            margin: auto;
+            text-align: center;
+            h2{
+                @include text(14px, 'Light', $lh-textbox, $main-bg-cl, upperCase);
+                letter-spacing: 2px;
+                max-width: 80px;
+                padding-bottom: 25px;
+            }
+            h3{
+                @include text($fz-title-main, 'Bold', $lh-text-infor, $main-bg-cl, upperCase);
+                letter-spacing: 4px;
+            }
+            .description{
+                padding-top: 25px;
+                @include text($fz-text, Arial, $lh-textbox, $white-cl, none);
+                letter-spacing: -0.25px;
+                &::after{
+                    content: '';
+                    width: 40%;
+                    height: 1px;
+                    background-color: $main-bg-cl;
+                    display: block;
+                    margin: 45px auto;
+                }
+            }
+            .title-gallery{
+                @include text(14px, 'Light', $lh-textbox, #eaeae7, upperCase);
+                padding-bottom: 25px;
+            }
+        }
+        @include mobile{
+            padding-top: 40px;
+            &__textbox{
+                max-width: initial;
+                .description{
+                    &::after{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        @include mobile-xxs{
+            padding-top: 40px;
+            &__textbox{
+                max-width: initial;
+                .description{
+                    &::after{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .gallery{
+        background-color: $title-main-cl;
+        padding-bottom: 130px;
+        .gallery__list{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 240px);
+            gap: 20px;
+            &-item{
+                width: 100%;
+                height: 100%;
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+                img{
+                    min-width: 100%;
+                    min-height: 100%;
+                    @include mid;
+                    object-fit: cover;
+                    @include transition($t);
+                }
+                &::before{
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba($color: $black-cl, $alpha: 0.3);
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+                    opacity: 0;
+                    pointer-events: none;
+                }
+                &:hover{
+                    img{
+                        @include transform(translate(-50%, -50%) scale(1.05));
+                        @include transition($t);
+                    }
+                    &::before{
+                        opacity: 1;
+                        pointer-events: auto;
+                    }
+                }
+            }
+            .item1{
+                grid-column: 1/2;
+                grid-row: 1/3;
+            }
+            .item2{
+                grid-row: 1/2;
+                grid-column: 2/4;
+            }
+        }
+        .container{
+            position: relative;
+            padding: 0;
+            .btn-fullScreen{
+                flex-direction: row-reverse;
+                align-items: baseline;
+                width: 120px;
+                position: absolute;
+                left: 10px;
+                bottom: 10%;
+                z-index: 50;
+                p{
+                    color: $white-cl;
+                    padding-left: 15px;
+                    padding-right: 0;
+                }
+                .image{
+                    background-color: $main-bg-cl;
+                }
+            }
+            .btn-control{
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                padding-top: 35px;
+                .previous, .next{
+                    display: flex;
+                    align-items: center;
+                    height: 20px;
+                    cursor: pointer;
+                    .image{
+                        width: 18px;
+                        height: 18px;
+                        @include transform(translateX(0px));
+                        @include transition($t);
+                        svg{
+                            *{
+                                fill:  #ffde00;
+                            }
+                        }
+                    }
+                    p{
+                        @include text($fz-text, 'Regular', $lh-text-infor, $main-bg-cl, none);
+                        padding-right: 15px;
+                    }
+                    &:hover{
+                        .image{
+                            @include transform(translateX(5px));
+                            @include transition($t);
+                        }
+                    }
+                }
+                .previous{
+                    p{
+                        @include text($fz-text, 'Regular', $lh-text-infor, $main-bg-cl, none);
+                        padding-left: 1rem;
+                        padding-right: 0;
+                    }
+                    &::after{
+                        content: '';
+                        width: 1px;
+                        height: 100%;
+                        display: inline-block;
+                        background-color: $main-bg-cl;
+                        margin: 0 15px;
+                    }
+                    &:hover{
+                        .image{
+                            @include transform(translateX(-5px));
+                            @include transition($t);
+                        }
+                    }
+                }
+            }
+        }
+        @include mobile{
+            .container{
+                width: initial;
+                padding: 0 15px;
+                .btn-fullScreen{
+                    display: none;
+                }
+                .btn-control{
+                    justify-content: center;
+                }
+            }
+            .gallery__list{
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 240px);
+                .item1{
+                    grid-area: initial;
+                }
+                .item2{
+                    grid-area: initial;
+                }
+            }
+        }
+        @include mobile-xxs{
+            .container{
+                width: initial;
+                padding: 0 15px;
+                .btn-fullScreen{
+                    display: none;
+                }
+                .btn-control{
+                    justify-content: center;
+                }
+            }
+            .gallery__list{
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 240px);
+                .item1{
+                    grid-area: initial;
+                }
+                .item2{
+                    grid-area: initial;
+                }
+            }
+        }
+    }
+    .career{
+        padding: 55px 0;
+        &__textbox{
+            max-width: 50%;
+            margin: auto;
+            text-align: center;
+            &-title{
+                @include text(14px, 'Light', $lh-textbox, $black-cl, upperCase);
+                letter-spacing: 2px;
+                padding-bottom: 25px
+            }
+            &-description{
+                @include text($fz-text, Arial, $lh-textbox, $black-cl, none);
+                margin-bottom: 95px;
+            }
+        }
+        .container::after{
+            content: '';
+            width: 100%;
+            height: 1px;
+            display: inline-block;
+            background-color: $black-cl;
+            
+        }
+        @include mobile{
+            &__textbox{
+                max-width: initial;
+            }
+        }
+        @include mobile-xxs{
+            &__textbox{
+                max-width: initial;
+            }
+        }
+    }
+}

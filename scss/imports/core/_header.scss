@@ -1,0 +1,125 @@
+header{
+    width: 100%;
+    position: relative;
+    left: 0;
+    height: $height-header;
+    background-color: $title-main-cl;
+    z-index: 1000;
+    .container{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        --WH-logo: 50px;
+        .hamburgers{
+            width: 30px;
+            height: 14px;
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            pointer-events: none;
+            cursor: pointer;
+            &-inner{
+                width: 100%;
+                height: 2px;
+                display: block;
+                background-color: $main-bg-cl;
+                @include mid;
+                @include transition($t);
+                &::before{
+                    content: '';
+                    width: 100%;
+                    height: 2px;
+                    background-color: $main-bg-cl;
+                    position: absolute;
+                    top: -10px;
+                    transition-delay: 0.2s;
+                }
+                &::after{
+                    content: '';
+                    width: 100%;
+                    height: 2px;
+                    background-color: $main-bg-cl;
+                    position: absolute;
+                    bottom: -10px;
+                    @include transition($t);
+                }
+            }
+            &.clicked{
+                .hamburgers-inner{
+                    transition-delay: .12s;
+                    transition-timing-function: cubic-bezier(.215,.61,.355,1);
+                    transform: rotate(45deg);
+                    left: -5px;
+                    @include transition($t);
+                    &::before{
+                        top: 0;
+                        transition: top 75ms ease,opacity 75ms ease .12s;
+                        @include hidden;
+                        @include transition($t);
+                    }
+                    &::after{
+                        bottom: 0;
+                        transition: bottom 75ms ease,transform 75ms cubic-bezier(.215,.61,.355,1) .12s;
+                        transform: rotate(-90deg);
+                        @include transition($t);
+                    }
+                }
+
+            }
+        }
+        .header-logo{
+            width: var(--WH-logo);
+            height: var(--WH-logo);
+            h1{
+                display: none;
+            }
+            .images{
+                width: 100%;
+                height: 100%;
+                position: relative;
+                a{
+                    width: 100%;
+                    height: 100%;
+                    .img{
+                        min-width: 100%;
+                        min-height: 100%;
+                        object-fit: cover;
+                        @include mid;
+                    }
+                }
+            }
+        }
+        .icon-fb{
+            width: 15px;
+            height: 15px;
+        }
+    }
+    @include mobile{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 60px;
+        .container{
+            --WH-logo: 37px;
+            .hamburgers{
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+    }
+    @include mobile-xxs{
+        height: 60px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        .container{
+            --WH-logo: 37px;
+            .hamburgers{
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+    }
+}

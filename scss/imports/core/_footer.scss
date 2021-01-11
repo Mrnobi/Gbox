@@ -1,0 +1,214 @@
+footer {
+	width: 100%;
+	height: 640px;
+	background-image: url(../img/bg-footer.jpg);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	.container{
+		display: flex;
+		justify-content: space-between;
+		.footer__left{
+			width: 50%;
+			ul{
+				width: 100%;
+				li{
+					width: 100%;
+					@include text($fz-text, 'SB', $lh-text-infor, $black-cl, upperCase);
+					letter-spacing: 1px;
+					&:nth-child(3){
+						padding: 30px 0;
+					}
+				}
+			}
+		}
+		.footer__right{
+			p{
+				max-width: 40%;
+				@include text($fz-text, 'SB', $lh-text-infor, $black-cl, upperCase);
+				letter-spacing: 1px;
+				span{
+					display: inline-block;
+				}
+			}
+			&-form{
+				display: flex;
+				justify-content: space-between;
+				width: 100%;
+				margin-top: 50px;
+				#form-footer{
+					width: 100%;
+					display: flex;
+					justify-content: space-between;
+					align-items: flex-start;
+				}
+				#form-left{
+					display: flex;
+					flex-direction: column;
+					width: 48%;
+				}
+				#form-right{
+					display: flex;
+					flex-direction: column;
+					width: 48%;
+				}
+				label{
+					@include text($fz-text, 'SB', $lh-textbox, $black-cl, none);
+					&:not(:nth-child(1)){
+						padding-top: 12px;
+					}
+				}
+				input[type = text]{
+					border: 0;
+					outline: none;
+					background: none;
+					border-bottom: 1px solid $black-cl;
+					@include text($fz-text, 'SB', $lh-text-infor, $black-cl, none);
+				}
+				input[type = number]{
+					border: 0;
+					outline: none;
+					background: none;
+					border-bottom: 1px solid $black-cl;
+					@include text($fz-text, 'SB', $lh-text-infor, $black-cl, none);
+				}
+				input[type = email]{
+					outline: none;
+					background: none;
+					border: none;
+					border-bottom: 1px solid $black-cl;
+					@include text($fz-text, 'SB', $lh-text-infor, $black-cl, none);
+				}
+				.submit{
+					background-color: $black-cl;
+					@include text($fz-text, 'SB', $lh-text-infor, $white-cl, upperCase);
+					width: 50px;
+					margin-top: 15px;
+					margin-left: auto;
+					cursor: pointer;
+					@include midflex;
+					@include transition($t);
+					&:hover{
+						background-color: $white-cl;
+						color: $black-cl;
+						@include transition($t);
+					}
+				}
+				.message__text{
+					display: flex;
+					flex-direction: column;
+					position: relative;
+					label{
+						padding-top: 15px;
+					}
+					textarea{
+						width: 100%;
+						border: 0;
+						outline: none;
+						background: none;
+						resize: none;
+						border-bottom: 1px solid $black-cl;
+						@include text($fz-text, 'SB', $lh-text-infor, $black-cl, none);
+					}
+					&::before{
+						content: '';
+						width: 100%;
+						height: 1px;
+						background-color: $black-cl;
+						display: block;
+						position: absolute;
+						top: 65%;
+					}
+				}
+				.error{
+					width: 100%;
+					color: red;
+					font-size: $fz-text;
+					margin-top: 8px;
+				}
+			}
+		}
+	}
+	.footer__bottom{
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		padding-top: 80px;
+		.backtotop{
+			width: 20px;
+			padding-bottom: 15px;
+			cursor: pointer;
+			@include transform(translateY(0));
+			@include transition($t);
+			.image{
+				width: 30px;
+			}
+			&:hover{
+				@include transform(translateY(-10px));
+				@include transition($t);
+			}
+		}
+		.copyright{
+			p{
+				@include text($fz-text, 'SB', $lh-text-infor, $black-cl, upperCase);
+			}
+		}
+	}
+
+	@include desktop {
+
+	}
+	@include tablet {
+		height: 615px;
+		background-size: 100% 460px;
+		.container{
+			padding-top: 20px;
+			.footer__right{
+				p{
+					max-width: 50%;
+				}
+			}
+		}
+	}
+	@include mobile {
+		height: 500px;
+		background-size: 100% 255px;
+		.container{
+			.footer__left{
+				width: 100%;
+				text-align: center;
+				ul{
+					li{
+						&:nth-child(3){
+							padding: initial;
+						}
+					}
+				}
+			}
+			.footer__right{
+				display: none;
+			}
+		}
+	}
+	@include mobile-xxs {
+		height: 500px;
+		background-size: 100% 255px;
+		.container{
+			.footer__left{
+				width: 100%;
+				text-align: center;
+				ul{
+					li{
+						&:nth-child(3){
+							padding: initial;
+						}
+					}
+				}
+			}
+			.footer__right{
+				display: none;
+			}
+		}
+	}
+}

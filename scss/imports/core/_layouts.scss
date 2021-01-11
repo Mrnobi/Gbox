@@ -1,0 +1,34 @@
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    box-sizing: border-box;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+html,
+body {
+    width: 100%;
+    max-width: $max-width;
+    -webkit-font-smoothing: antialiased;
+    margin: auto;
+    @include text($fz-text, Arial, $lh-textbox, $text-black-cl, none);
+    background: #f4f4f4;
+    @include custom-scrollbar();
+    @include desktop {
+        
+    }
+    @include tablet {
+        
+    }
+    @include mobile {
+        
+    }
+    @include mobile-xxs {
+        
+    }
+    &.noScroll{
+        overflow: hidden;
+    }
+}

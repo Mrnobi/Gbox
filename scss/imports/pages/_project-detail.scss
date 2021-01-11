@@ -1,0 +1,148 @@
+.project{
+    .project__details{
+        padding: 55px 0;
+        .container{
+            padding: 0;
+            &::after{
+                content: '';
+                width: 100%;
+                height: 2px;
+                background-color: $black-cl;
+                display: block;
+                margin: 70px 0 55px 0;
+            }
+        }
+        &-control{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 35px;
+            h2{
+                @include text(14px, 'Light', 22px, $black-cl, upperCase);
+            }
+            .btn{
+                display: flex;
+                width: 50%;
+                justify-content: flex-end;
+                &-fullScreen{
+                    margin-right: 10%;
+                }
+                &-previous{
+                    img{
+                        width: 20px;
+                        height: 20px;
+                        @include transform(translateX(0px));
+                        @include transition($t);
+                    }
+                    a:last-child{
+                        padding-right: 0;
+                    }
+                    &:hover{
+                        img{
+                            @include transform(translateX(-10px));
+                            @include transition($t);
+                        }
+                    }
+                }
+            }
+        }
+        &-image{
+            width: 100%;
+            height: 530px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            img{
+                min-width: 100%;
+                min-height: 100%;
+                object-fit: cover;
+                @include mid;
+            }
+        }
+        &-infor{
+            padding-top: 35px;
+            display: flex;
+            justify-content: space-between;
+            .description{
+                max-width: 30%;
+                h2{
+                    @include text(14px, 'Light', 22px, $black-cl, upperCase);
+                    letter-spacing: 2px;
+                }
+                p{
+                    @include text($fz-text-m, Arial, 22px, $black-cl, none);
+                }
+            }
+            .client{
+                h2{
+                    @include text(14px, 'Light', 22px, $black-cl, upperCase);
+                    letter-spacing: 2px;
+                }
+                p{
+                    @include text($fz-text-m, Arial, 22px, $black-cl, none);
+                }
+            }
+            .aboutteam{
+                h2{
+                    @include text(14px, 'Light', 22px, $black-cl, upperCase);
+                    letter-spacing: 2px;
+                }
+                ul{
+                    li{
+                        @include text($fz-text-m, Arial, 22px, $black-cl, none);
+                        span{
+                            @include text($fz-text-m, Arial, 22px, $black-cl, upperCase);
+                        }
+                    }
+                }
+            }
+        }
+        @include mobile{
+            .project__details-control{
+                padding: 0 10px 35px 10px;
+                .btn{
+                    &-fullScreen{
+                        display: none;
+                    }
+                }
+            }
+            .project__details-image{
+                height: 250px;
+            }
+            .project__details-infor{
+                flex-direction: column-reverse;
+                padding: 35px 15px 0 15px;
+                .description{
+                    max-width: initial;
+                }
+                .client{
+                    padding: 40px 0;
+                }
+            }
+        }
+        @include mobile-xxs{
+            .project__details-control{
+                padding: 0 10px 35px 10px;
+                .btn{
+                    &-fullScreen{
+                        display: none;
+                    }
+                }
+            }
+            .project__details-image{
+                height: 250px;
+            }
+            .project__details-infor{
+                flex-direction: column;
+                padding: 35px 15px 0 15px;
+                .description{
+                    max-width: initial;
+                }
+                .client{
+                    padding: 40px 0;
+                }
+            }
+        }
+    }
+}

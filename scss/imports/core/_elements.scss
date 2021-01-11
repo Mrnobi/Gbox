@@ -1,0 +1,165 @@
+img{
+    display: block;
+    margin: auto;
+    max-width: 100%;
+}
+a{
+    color: $black-cl;
+    text-decoration: none;
+    display: block;
+}
+strong {
+    font-family: bb;
+}
+
+.-lv1 {
+    @include text(100px, b, 100px, $white-cl, none);
+    font-weight: normal;
+    margin: 0;
+    a {
+        @include text(100px, g, 100px, $white-cl, none);
+    }
+    @include tablet {
+    }
+    @include mobile {
+    }
+}
+.project__groups{
+    display: flex;
+    justify-content: center;
+    ul{
+        @include midflex;
+        li{
+            padding: 0 20px;
+            a{
+                @include text($fz-text, 'SB', $lh-text-infor, $black-cl, upperCase);
+            }
+        }
+    }
+    padding-bottom: 15px;
+}
+.booking{
+    display: flex;
+    p{
+        max-width: 100px;
+        text-align: right;
+        @include text(14px, 'Regular', $lh-textbox, $black-cl, none);
+    }
+    &__now{
+        max-width: 100px;
+        width: 100px;
+        height: 100px;
+        background-color: $title-main-cl;
+        cursor: pointer;
+        position: relative;
+        margin-left: 15px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        border-radius: 15px;
+        @include transition($t);
+        a{
+            width: 100%;
+            height: 100%;
+            h2{
+                @include mid;
+                @include text(24px, 'EX', $lh-text-infor, $main-bg-cl, upperCase);
+                span{
+                    @include text(27px, 'EX', $lh-text-infor, $main-bg-cl, upperCase);
+                }
+            }
+        }
+        &:hover{
+            background-color: $main-bg-cl;
+            @include transition($t);
+            a{
+                h2{
+                    color: $title-main-cl;
+                    span{
+                        color: $title-main-cl;
+                    }
+                }
+            }
+        }
+    }
+    &.left{
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        p{
+            text-align: left;
+        }
+        .booking__now{
+            margin-left: initial;
+            margin-right: 15px;
+        }
+    }
+}
+.btn-fullScreen{
+    @include midflex;
+    p{
+        @include text($fz-text, 'Regular', $lh-text-infor, $black-cl, none);
+        padding-right: 20px;
+    }
+    .image{
+        width: 25px;
+        height: 25px;
+        @include midflex;
+        .svg{
+            cursor: pointer;
+            width: 15px;
+        }
+    }
+}
+.btn-previous{
+    @include midflex;
+    a{
+        @include text($fz-text, 'Regular', $lh-text-infor, $black-cl, none);
+        padding-right: 20px;
+    }
+    .svg{
+        cursor: pointer;
+        width: 15px;
+        @include transform(translateX(0px));
+        @include transition($t);
+    }
+    &:hover{
+        .svg{
+            @include transform(translateX(-10px));
+            @include transition($t);
+        }
+    }
+}
+.number{
+    background-color: $main-bg-cl;
+    @include midflex;
+    flex-direction: column;
+    width: 120px;
+    height: 120px;
+    p{
+        @include text($fz-text-m, 'Regular', $lh-textbox, $black-cl, upperCase);
+    }
+    h2{
+        @include text(62px, 'bold', 62px, $black-cl, upperCase);
+    }
+}
+.more{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 80px;
+    a{
+        @include text($fz-text, 'SB', $lh-text-infor, $black-cl, upperCase);
+        padding-bottom: 15px;
+    }
+    .arrow{
+        width: 20px;
+        height: 20px;
+        @include transform(translateY(0));
+        @include transition($t);
+    }
+    &:hover{
+        .arrow{
+            @include transform(translateY(10px));
+            @include transition($t);
+        }
+    }
+}

@@ -1,0 +1,91 @@
+.allwork{
+    .allproject{
+        .container{
+            padding-top: 55px;
+            padding-left: inherit;
+            padding-right: inherit;
+            &::after{
+                content: '';
+                width: 100%;
+                height: 2px;
+                background-color: $black-cl;
+                display: block;
+                margin: 70px 0 60px 0;
+            }
+        }
+        &__bottom{
+            display: flex;
+            padding-top: 15px;
+            justify-content: flex-end;
+            position: relative;
+            &-more{
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                left: 50%;
+                @include transform(translateX(-50%));
+                a{
+                    @include text($fz-text, 'SB', $lh-text-infor, $black-cl, upperCase);
+                    padding-bottom: 15px;
+                }
+                .image{
+                    align-self: center;
+                    width: 20px;
+                    height: 20px;
+                    @include transform(translateY(0));
+                    @include transition($t);
+                }
+                &:hover{
+                    .image{
+                        @include transform(translateY(10px));
+                        @include transition($t);
+                    }
+                }
+            }
+        }
+        @include mobile {
+            .allproject__bottom{
+                flex-direction: column-reverse;
+                justify-content: center;
+                align-items: center;
+                &-more{
+                    position: initial;
+                    margin-top: 60px;
+                    @include transform(translateX(0));
+                }
+                .booking{
+                    flex-direction: column;
+                    p{
+                        text-align: center;
+                    }
+                    &__now{
+                        margin-top: 15px;
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+        @include mobile-xxs {
+            .allproject__bottom{
+                flex-direction: column-reverse;
+                justify-content: center;
+                align-items: center;
+                &-more{
+                    position: initial;
+                    margin-top: 60px;
+                    @include transform(translateX(0));
+                }
+                .booking{
+                    flex-direction: column;
+                    p{
+                        text-align: center;
+                    }
+                    &__now{
+                        margin-top: 15px;
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
+}

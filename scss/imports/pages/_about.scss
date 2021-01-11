@@ -1,0 +1,108 @@
+.about{
+    padding-bottom: 60px;
+    .navigators{
+        .container{
+            border: none;
+        }
+    }
+    .about__us{
+        --heightAbout: 640px;
+        height: var(--heightAbout);
+        background-image: url(../img/bg-about.jpg);
+        background-repeat: repeat-x;
+        background-size: 100% 100%;
+        position: relative;
+        overflow: hidden;
+        .container{
+            height: 100%;
+        }
+        &-textbox{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            max-width: 870px;
+            position: absolute;
+            z-index: 10;
+            padding: 0 15px;
+            .title-about{
+                @include text(36px, 'Bold', 58px, $main-bg-cl, upperCase);
+                letter-spacing: 6px;
+                max-width: 300px;
+            }
+            .description{
+                @include text(18px, 'Light', 40px, #e4e4e4, none);
+                span{
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+            }
+            .booking{
+                padding-top: 50px;
+                p{
+                    color: $white-cl;
+                }
+            }
+        }
+        .image{
+            height: max-content;
+            position: absolute;
+            bottom: 0;
+            right: 12%;
+            img{
+                min-width: 100%;
+                min-height: 100%;
+                object-fit: cover;
+            }
+        }
+        @include tablet{
+            .image{
+                right: 0;
+            }
+        }
+        @include mobile{
+            --heightAbout: 900px;
+            top: -66px;
+            .about__us-textbox{
+                padding-left: 0;
+                .title-about{
+                    max-width: 220px;
+                    font-size: 28px;
+                }
+                .description{
+                    padding-left: 15px;
+                    font-size: 16px;
+                    line-height: 34px;
+                }
+                .booking{
+                    padding-left: 15px;
+                }
+            }
+            .image{
+                right: 0;
+            }
+        }
+        @include mobile-xxs{
+            --heightAbout: 900px;
+            top: -10px;
+            .about__us-textbox{
+                padding-left: 0;
+                .title-about{
+                    max-width: 220px;
+                    font-size: 28px;
+                }
+                .description{
+                    padding-left: 15px;
+                    font-size: 16px;
+                    line-height: 34px;
+                }
+                .booking{
+                    padding-left: 15px;
+                }
+            }
+            .image{
+                right: 0;
+            }
+        }
+    }
+}
